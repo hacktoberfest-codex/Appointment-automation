@@ -20,7 +20,7 @@ router.get('/',async (req,res)=>{
 router.post('/',async (req,res)=>{
     let appointment = new Appointment({
         patient : req.body.patient,
-        date : req.body.date,
+        date_time : req.body.date_time,
         doctor : req.body.doctor,
         status : req.body.status,
         priority : req.body.priority

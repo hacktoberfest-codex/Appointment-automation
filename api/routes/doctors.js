@@ -46,7 +46,7 @@ router.get('/',async (req,res)=>{
 });
 
 router.post('/',upload.single('image'), async (req,res)=>{
-    // try{
+    try{
         let imageNames;
         if(req.file){
             const buffer = await sharp(req.file.buffer).resize({ height: 1080, width: 1920, fit: 'contain' }).toBuffer();
@@ -91,9 +91,9 @@ router.post('/',upload.single('image'), async (req,res)=>{
            return res.status(500).json({success: false, message: 'Doctor cannot be added'}); 
         }
         res.status(201).json({success: true, message: "Doctor Added"});
-    // }catch(e){
-    //     res.status(500).json({success: false, message: e});
-    // }
+    }catch(e){
+        res.status(500).json({success: false, message: e});
+    }
 });
 
 module.exports = router;
