@@ -2,20 +2,71 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt')
 const {Patient} = require('../models/patient');
+const multer = require('multer');
+const { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3');
+const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
+const sharp = require('sharp');
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+const bucketName = process.env.AWS_BUCKET_NAME;
+const bucketRegion = process.env.AWS_BUCKET_REGION;
+const accessKey = process.env.AWS_ACCESS_KEY;
+const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+
+const s3 = new S3Client({
+    credentials: {
+        accessKeyId: accessKey,
+        secretAccessKey: secretAccessKey
+    },
+    region: bucketRegion
+});
 
 router.get('/',async (req,res)=>{
-    const patientList = await Patient.find();
+    let patientList;
+    if(req.query.id){
+        patientList = await Patient.findById(req.query.id);
+    }else{
+        patientList = await Patient.find();
+    }
     if(!patientList){
         return res.status(500).json({success: false, message: "Can't get list"});
+    }
+    for(const patient of patientList){
+        const getObjectParams = {
+            Bucket: bucketName,
+            Key: patient.image.imageName
+        }
+        const command = new GetObjectCommand(getObjectParams);
+        const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+        patient.image.imageURL = url;
     }
     res.status(200).send(patientList);
 });
 
-router.post('/',async (req,res)=>{
+router.post('/',upload.single('image'),async (req,res)=>{
     try{
+        let imageNames;
+        if(req.file){
+            const buffer = await sharp(req.file.buffer).resize({ height: 1080, width: 1920, fit: 'contain' }).toBuffer();
+            imageNames = `${Date.now()}_${req.file.originalname}`;
+            const params = {
+                Bucket: bucketName,
+                Key: imageNames,
+                Body: buffer,
+                Content: req.file.mimetype
+            }
+            const command = new PutObjectCommand(params);
+            await s3.send(command);
+        }
         let patient = new Patient({
             first_name : req.body.first_name,
             last_name : req.body.last_name,
+            age : req.body.age,
+            image : {
+                imageName : imageNames
+            },
             gender : req.body.gender,
             date_of_birth : req.body.date_of_birth,
             blood_group : req.body.blood_group,

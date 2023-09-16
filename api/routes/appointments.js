@@ -10,7 +10,7 @@ router.get('/',async (req,res)=>{
     if(req.query.patient){
         filter = {patient: req.query.patient}
     }
-    const appointmentList = await Appointment.find(filter).populate('patient').populate('doctor');
+    const appointmentList = await Appointment.find(filter).populate('patient','first_name last_name age gender').populate('doctor','first_name last_name');
     if(!appointmentList){
         return res.status(404).json({success: false, message: 'No appointments found'})
     }
@@ -27,7 +27,7 @@ router.post('/',async (req,res)=>{
     });
     appointment = await appointment.save();
     if(!appointment){
-        return res.status(500).json({success: false,message: "Appoinment can't be created"})
+        return res.status(500).json({success: false,message: "Appoinment can't be created"});
     }
     res.status(201).json({success: true,message: 'Appointment created successfully'});
 });

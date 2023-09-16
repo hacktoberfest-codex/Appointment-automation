@@ -9,8 +9,18 @@ const patientSchema = new mongoose.Schema({
         type: String,
         required : true
     },
+    age : {
+        type: String,
+        required: true
+    },
     image : {
-        type: String
+        imageName: {
+            type: String
+        },
+        imageURL: {
+            type: String,
+            default : ""
+        }
     },
     gender : {
         type: String,

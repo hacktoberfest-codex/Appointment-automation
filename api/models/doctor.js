@@ -11,7 +11,13 @@ const doctorSchema = mongoose.Schema({
         required : true
     },
     image : {
-        type: String
+        imageName: {
+            type: String
+        },
+        imageURL: {
+            type: String,
+            default : ""
+        }
     },
     gender : {
         type: String,

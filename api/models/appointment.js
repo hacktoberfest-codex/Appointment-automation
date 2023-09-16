@@ -6,7 +6,7 @@ const appointmentSchema = new mongoose.Schema({
         ref : 'Patient',
         required : true
     },
-    date : {
+    date_time : {
         type : String,
         required : true
     },
