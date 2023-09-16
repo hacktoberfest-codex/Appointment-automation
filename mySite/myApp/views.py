@@ -15,17 +15,24 @@ def forDoctor(request):
     for n in data:
         storage[n['_id']]=n['patient']
 
-    print(storage)
+    # print(storage)
 
     return render(request,"doctorsLandingPage.html")
 
 
 def forDesk(request):
-    api_url = "http://127.0.0.1:3000/appointments"
+    api_url = "http://127.0.0.1:3000/doctors"
     response = requests.get(api_url)
     data = response.json()
 
-    return render(request,'deskLandingPage.html')
+    for n in data:
+        print(n['first_name']+' '+n['last_name'] + ' ' + n['speciality'])
+
+    context = {
+        'data':data
+    }
+
+    return render(request,'deskLandingPage.html',context)
 
 def home(request):
 
