@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -195,9 +195,9 @@
                             <h1 class="text-2xl font-bold text-black">Session completed?</h1>
                             <div class="emoji flex flex-row  items-center">
                                 <input class="hidden" type="radio" id="checked" name="status" value="check">
-                                <label for="checked"><img class="h-24 w-24" src="images/check.png" alt=""></label>
+                                <label for="checked"><img class="h-24 w-24" src={% static "images\check.png" %} alt=""></label>
                                 <input class="hidden" type="radio" id="css" name="status" value="uncheck">
-                                <label for="css"> <img class="h-16 w-16" src="images/uncheck.webp" alt=""></label>
+                                <label for="css"> <img class="h-16 w-16" src={% static "images\uncheck.webp" %} alt=""></label>
 
 
                             </div>
@@ -221,7 +221,7 @@
                     <div class="comment flex flex-row justify-between mb-3">
                         <div class="name flex flex-row">
                             <div class="image mr-3">
-                                <img class="h-10 w-10 bg-[#D4E8EF] rounded-2xl " src="images/boy.png" alt="">
+                                <img class="h-10 w-10 bg-[#D4E8EF] rounded-2xl " src={% static "images/boy.png" %} alt="">
                             </div>
                             <div class="details capitalize font-semibold">
                                 <h2 class="text-base">Dr.Prashant</h2>
@@ -234,7 +234,7 @@
                     <div class="comment flex flex-row justify-between mb-3">
                         <div class="name flex flex-row">
                             <div class="image mr-3">
-                                <img class="h-10 w-10 bg-[#F5E2E3] rounded-2xl " src="images/girl.png" alt="">
+                                <img class="h-10 w-10 bg-[#F5E2E3] rounded-2xl " src={% static "images/girl.png" %} alt="">
                             </div>
                             <div class="details capitalize font-semibold">
                                 <h2 class="text-base">Dr.shelly</h2>
@@ -247,7 +247,7 @@
                     <div class="comment flex flex-row justify-between mb-3">
                         <div class="name flex flex-row">
                             <div class="image mr-3">
-                                <img class="h-10 w-10 bg-[#D4E8EF] rounded-2xl " src="images/boy.png" alt="">
+                                <img class="h-10 w-10 bg-[#D4E8EF] rounded-2xl " src={% static "images/boy.png" %} alt="">
                             </div>
                             <div class="details capitalize font-semibold">
                                 <h2 class="text-base">Dr.Prashant</h2>
@@ -260,7 +260,7 @@
                     <div class="comment flex flex-row justify-between mb-3">
                         <div class="name flex flex-row">
                             <div class="image mr-3">
-                                <img class="h-10 w-10 bg-[#F5E2E3] rounded-2xl " src="images/girl.png" alt="">
+                                <img class="h-10 w-10 bg-[#F5E2E3] rounded-2xl " src={% static "images/girl.png" %} alt="">
                             </div>
                             <div class="details capitalize font-semibold">
                                 <h2 class="text-base">Dr.shelly</h2>
