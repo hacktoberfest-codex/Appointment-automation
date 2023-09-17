@@ -5,12 +5,12 @@ const {Appointment} = require('../models/appointment');
 router.get('/',async (req,res)=>{
     let filter = {};
     if(req.query.doctor){
-        filter = {doctor: req.query.doctor}
+        filter = {doctor: req.query.doctor};
     }
     if(req.query.patient){
-        filter = {patient: req.query.patient}
+        filter = {patient: req.query.patient};
     }
-    const appointmentList = await Appointment.find(filter).populate('patient','first_name last_name age gender').populate('doctor','first_name last_name');
+    const appointmentList = await Appointment.find(filter).populate('patient','first_name last_name age gender blood_group').populate('doctor','first_name last_name');
     if(!appointmentList){
         return res.status(404).json({success: false, message: 'No appointments found'})
     }
