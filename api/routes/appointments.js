@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {Appointment} = require('../models/appointment');
+const {Patient} = require('../models/patient');
 
 router.get('/',async (req,res)=>{
     let filter = {};
@@ -44,15 +45,22 @@ router.post('/',async (req,res)=>{
 });
 
 router.put('/completed',async (req,res)=>{
+    let filter = {};
+    if(req.query.number){
+        filter = {phone: req.query.number};
+    }
+    let findPatient = await Patient.find(filter);
+    let patientID = findPatient[0]._id.toString();
+    let findappointment = await Appointment.findOne({patient: findPatient[0]._id});
     try{
         let appointment;
         if(req.body.doctor){
-            appointment = await Appointment.findByIdAndUpdate(req.query.id,{
+            appointment = await Appointment.findByIdAndUpdate(findappointment._id.toString(),{
                 doctor : req.body.doctor,
                 status: 'forwarded'
             },{new: true});
         }else{
-            appointment = await Appointment.findByIdAndUpdate(req.query.id,{
+            appointment = await Appointment.findByIdAndUpdate(findappointment._id.toString(),{
                 status: 'completed'
             },{new: true});
         }
