@@ -27,31 +27,35 @@ router.get('/',async (req,res)=>{
     let patientList;
     if(req.query.id){
         patientList = await Patient.findById(req.query.id);
+    }else if(req.query.number){
+        console.log(req.query.number)
+        patientList = await Patient.find({phone : req.query.number});
+        console.log(patientList)
     }else{
         patientList = await Patient.find();
     }
     if(!patientList){
         return res.status(500).json({success: false, message: "Can't get list"});
     }
-    if(patientList.length == 2){
-        for(const patient of patientList){
-            const getObjectParams = {
-                Bucket: bucketName,
-                Key: patient.image.imageName
-            }
-            const command = new GetObjectCommand(getObjectParams);
-            const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
-            patient.image.imageURL = url;
-        }
-    }else{
-        const getObjectParams = {
-            Bucket: bucketName,
-            Key: patientList.image.imageName
-        }
-        const command = new GetObjectCommand(getObjectParams);
-        const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
-        patientList.image.imageURL = url;
-    }
+    // if(patientList.length == 2){
+    //     for(const patient of patientList){
+    //         const getObjectParams = {
+    //             Bucket: bucketName,
+    //             Key: patient.image.imageName
+    //         }
+    //         const command = new GetObjectCommand(getObjectParams);
+    //         const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+    //         patient.image.imageURL = url;
+    //     }
+    // }else{
+    //     const getObjectParams = {
+    //         Bucket: bucketName,
+    //         Key: patientList.image.imageName
+    //     }
+    //     const command = new GetObjectCommand(getObjectParams);
+    //     const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+    //     patientList.image.imageURL = url;
+    // }
     res.status(200).send(patientList);
     
 });
