@@ -17,6 +17,17 @@ router.get('/',async (req,res)=>{
     res.status(200).send(appointmentList);
 });
 
+router.get('/count',async (req,res)=>{
+    try{
+        const count = await Appointment.countDocuments();
+        res.json({success: true,count});
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json({success: false,message: 'Internal server error'});
+    }     
+});
+
 router.post('/',async (req,res)=>{
     let appointment = new Appointment({
         patient : req.body.patient,
@@ -30,6 +41,26 @@ router.post('/',async (req,res)=>{
         return res.status(500).json({success: false,message: "Appoinment can't be created"});
     }
     res.status(201).json({success: true,message: 'Appointment created successfully'});
+});
+
+router.put('/completed',async (req,res)=>{
+    try{
+        let appointment;
+        if(req.body.doctor){
+            appointment = await Appointment.findByIdAndUpdate(req.query.id,{
+                doctor : req.body.doctor,
+                status: 'forwarded'
+            },{new: true});
+        }else{
+            appointment = await Appointment.findByIdAndUpdate(req.query.id,{
+                status: 'completed'
+            },{new: true});
+        }
+        res.status(201).json({success: true,message: 'Appointment Updated'});
+    }catch(err){
+        console.log(err);
+        res.status(500).json({success: false,message: 'Internal Server Error'})
+    }
 });
 
 module.exports = router;

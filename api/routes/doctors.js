@@ -45,6 +45,17 @@ router.get('/',async (req,res)=>{
     res.status(200).send(doctorsList);
 });
 
+router.get('/count',async (req,res)=>{
+    try{
+        const count = await Doctor.countDocuments();
+        res.json({success: true,count});
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json({success: false,message: 'Internal server error'});
+    }     
+});
+
 router.post('/',upload.single('image'), async (req,res)=>{
     try{
         let imageNames;
