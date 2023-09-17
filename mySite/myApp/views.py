@@ -1,4 +1,5 @@
 from django.shortcuts import render,HttpResponse
+from django.http import JsonResponse
 
 import requests
 
@@ -10,11 +11,30 @@ def forDoctor(request):
     response = requests.get(api_url)
     data = response.json()
     
+    forwarded = []
+    pending = []
+    for gn in data:
+        if( gn['status']=='forwarded' ):
+            forwarded.append(gn)
+        if( gn['status']=='pending' ):
+            pending.append(gn)
+
+    
+
+    print(f'Forwarded = {forwarded}')
     print(data[0])
     context={
-        'data':data
+        'data':data,
+        'forwarded':forwarded,
+        'pending':pending,
     }
     return render(request,"doctorsLandingPage.html",context)
+
+def get_user(request):
+    api_url = "http://127.0.0.1:3000/patients"
+    response = requests.get(api_url)
+    data = response.json()
+
 
 
 def forDesk(request):
