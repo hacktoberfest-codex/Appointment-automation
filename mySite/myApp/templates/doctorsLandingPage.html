@@ -133,65 +133,22 @@
                                 <td class="py-2 px-8 text-[#222]">action</td>
                             </tr>
                         </thead>
+                        
+                        {% for n in data %}
                         <tbody>
-                            <tr class="capitalize font-normal">
-                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
-                                <td class="py-2 px-8 text-[#222]">male</td>
-                                <td class="py-2 px-8 text-[#222]">34</td>
-                                <td class="py-2 px-8 text-[#222]">1 sep 2023, 11:00 am</td>
-                                <td class="py-2 px-8 text-[#222]">icon</td>
-                            </tr>
-                            <tr class="capitalize font-normal">
-                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
-                                <td class="py-2 px-8 text-[#222]">male</td>
-                                <td class="py-2 px-8 text-[#222]">34</td>
-                                <td class="py-2 px-8 text-[#222]">1 sep 2023, 11:00 am</td>
-                                <td class="py-2 px-8 text-[#222]">icon</td>
-                            </tr>
-                            <tr class="capitalize font-normal">
-                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
-                                <td class="py-2 px-8 text-[#222]">male</td>
-                                <td class="py-2 px-8 text-[#222]">34</td>
-                                <td class="py-2 px-8 text-[#222]">1 sep 2023, 11:00 am</td>
-                                <td class="py-2 px-8 text-[#222]">icon</td>
-                            </tr>
-                            <tr class="capitalize font-normal">
-                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
-                                <td class="py-2 px-8 text-[#222]">male</td>
-                                <td class="py-2 px-8 text-[#222]">34</td>
-                                <td class="py-2 px-8 text-[#222]">1 sep 2023, 11:00 am</td>
-                                <td class="py-2 px-8 text-[#222]">icon</td>
-                            </tr>
-                            <tr class="capitalize font-normal">
-                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
-                                <td class="py-2 px-8 text-[#222]">male</td>
-                                <td class="py-2 px-8 text-[#222]">34</td>
-                                <td class="py-2 px-8 text-[#222]">1 sep 2023, 11:00 am</td>
-                                <td class="py-2 px-8 text-[#222]">icon</td>
-                            </tr>
-                            <tr class="capitalize font-normal">
-                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
-                                <td class="py-2 px-8 text-[#222]">male</td>
-                                <td class="py-2 px-8 text-[#222]">34</td>
-                                <td class="py-2 px-8 text-[#222]">1 sep 2023, 11:00 am</td>
-                                <td class="py-2 px-8 text-[#222]">icon</td>
-                            </tr>
-                            <tr class="capitalize font-normal">
-                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
-                                <td class="py-2 px-8 text-[#222]">male</td>
-                                <td class="py-2 px-8 text-[#222]">34</td>
-                                <td class="py-2 px-8 text-[#222]">1 sep 2023, 11:00 am</td>
-                                <td class="py-2 px-8 text-[#222]">icon</td>
-                            </tr>
-                            <tr class="capitalize font-normal">
-                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
-                                <td class="py-2 px-8 text-[#222]">male</td>
-                                <td class="py-2 px-8 text-[#222]">34</td>
-                                <td class="py-2 px-8 text-[#222]">1 sep 2023, 11:00 am</td>
-                                <td class="py-2 px-8 text-[#222]">icon</td>
-                            </tr>
 
+                            <tr class="capitalize font-normal">
+                                <td class="py-2 px-8 text-[#222]">{{n.patient.first_name}} {{n.patient.last_name}}</td>
+                                <td class="py-2 px-8 text-[#222]">{{n.patient.gender}}</td>
+                                <td class="py-2 px-8 text-[#222]">{{n.patient.age}}</td>    
+                                <td class="py-2 px-8 text-[#222]">{{n.date_time}}</td>
+                                <td class="py-2 px-8 text-[#222]">icon</td>
+                            </tr>
                         </tbody>
+                        
+                        {% endfor %}
+
+                        
                     </table>
                 </div>
             </div>

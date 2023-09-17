@@ -9,15 +9,12 @@ def forDoctor(request):
     api_url = "http://127.0.0.1:3000/appointments"
     response = requests.get(api_url)
     data = response.json()
-
-    storage = {}
     
-    for n in data:
-        storage[n['_id']]=n['patient']
-
-    # print(storage)
-
-    return render(request,"doctorsLandingPage.html")
+    print(data[0])
+    context={
+        'data':data
+    }
+    return render(request,"doctorsLandingPage.html",context)
 
 
 def forDesk(request):
@@ -25,13 +22,10 @@ def forDesk(request):
     response = requests.get(api_url)
     data = response.json()
 
-    for n in data:
-        print(n['first_name']+' '+n['last_name'] + ' ' + n['speciality'])
-
+    print(data[0])
     context = {
         'data':data
     }
-
     return render(request,'deskLandingPage.html',context)
 
 def home(request):
