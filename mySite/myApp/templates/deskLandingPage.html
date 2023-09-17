@@ -103,7 +103,7 @@
                             <i class="las la-stethoscope text-5xl p-2  bg-[#E3F0FB] text-[#169AFB] rounded-full"></i>
                         </div>
                         <div class="text capitalize">
-                            <h1 class="text-black font-bold text-2xl">120</h1>
+                            <h1 class="text-black font-bold text-2xl">{{noDoc}}</h1>
                             <h2 class="text-[#b0b0b0] font-medium text-base ">total doctors</h2>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                             <i class="las la-user-injured text-5xl p-2  bg-[#FFEFDC] text-[#F8A21F] rounded-full"></i>
                         </div>
                         <div class="text capitalize">
-                            <h1 class="text-black font-bold text-2xl">243</h1>
+                            <h1 class="text-black font-bold text-2xl">{{noPatient}}</h1>
                             <h2 class="text-[#b0b0b0] font-medium text-base ">active patients</h2>
                         </div>
                     </div>
@@ -180,78 +180,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="capitalize font-normal">
-                                    <td class="py-2 px-2 text-[#222]">1</td>
-                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
-                                    <td class="py-2 px-2 text-[#222]">28</td>
-                                    <td class="py-2 px-2 text-[#222]">male</td>
-                                    <td class="py-2 px-2 text-[#222]">1 sep 2023, 11:00 am</td>
-                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
-                                    <td class="py-2 px-2 text-[#222]">icon</td>
-                                </tr>
+
+                                {% for n in patient %}
                                 <tr class="capitalize font-normal">
                                     <td class="py-2 px-2 text-[#222]">2</td>
-                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
-                                    <td class="py-2 px-2 text-[#222]">28</td>
-                                    <td class="py-2 px-2 text-[#222]">male</td>
-                                    <td class="py-2 px-2 text-[#222]">1 sep 2023, 11:00 am</td>
-                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.patient.first_name}} {{n.patient.last_name}}</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.patient.age}}</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.patient.gender}}</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.date_time}}</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.doctor.first_name}} {{n.doctor.last_name}}</td>
                                     <td class="py-2 px-2 text-[#222]">icon</td>
                                 </tr>
-                                <tr class="capitalize font-normal">
-                                    <td class="py-2 px-2 text-[#222]">3</td>
-                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
-                                    <td class="py-2 px-2 text-[#222]">28</td>
-                                    <td class="py-2 px-2 text-[#222]">male</td>
-                                    <td class="py-2 px-2 text-[#222]">1 sep 2023, 11:00 am</td>
-                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
-                                    <td class="py-2 px-2 text-[#222]">icon</td>
-                                </tr>
-                                <tr class="capitalize font-normal">
-                                    <td class="py-2 px-2 text-[#222]">4</td>
-                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
-                                    <td class="py-2 px-2 text-[#222]">28</td>
-                                    <td class="py-2 px-2 text-[#222]">male</td>
-                                    <td class="py-2 px-2 text-[#222]">1 sep 2023, 11:00 am</td>
-                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
-                                    <td class="py-2 px-2 text-[#222]">icon</td>
-                                </tr>
-                                <tr class="capitalize font-normal">
-                                    <td class="py-2 px-2 text-[#222]">5</td>
-                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
-                                    <td class="py-2 px-2 text-[#222]">28</td>
-                                    <td class="py-2 px-2 text-[#222]">male</td>
-                                    <td class="py-2 px-2 text-[#222]">1 sep 2023, 11:00 am</td>
-                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
-                                    <td class="py-2 px-2 text-[#222]">icon</td>
-                                </tr>
-                                <tr class="capitalize font-normal">
-                                    <td class="py-2 px-2 text-[#222]">6</td>
-                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
-                                    <td class="py-2 px-2 text-[#222]">28</td>
-                                    <td class="py-2 px-2 text-[#222]">male</td>
-                                    <td class="py-2 px-2 text-[#222]">1 sep 2023, 11:00 am</td>
-                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
-                                    <td class="py-2 px-2 text-[#222]">icon</td>
-                                </tr>
-                                <tr class="capitalize font-normal">
-                                    <td class="py-2 px-2 text-[#222]">7</td>
-                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
-                                    <td class="py-2 px-2 text-[#222]">28</td>
-                                    <td class="py-2 px-2 text-[#222]">male</td>
-                                    <td class="py-2 px-2 text-[#222]">1 sep 2023, 11:00 am</td>
-                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
-                                    <td class="py-2 px-2 text-[#222]">icon</td>
-                                </tr>
-                                <tr class="capitalize font-normal">
-                                    <td class="py-2 px-2 text-[#222]">8</td>
-                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
-                                    <td class="py-2 px-2 text-[#222]">28</td>
-                                    <td class="py-2 px-2 text-[#222]">male</td>
-                                    <td class="py-2 px-2 text-[#222]">1 sep 2023, 11:00 am</td>
-                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
-                                    <td class="py-2 px-2 text-[#222]">icon</td>
-                                </tr>
+                                {% endfor %}
+
 
                             </tbody>
                         </table>

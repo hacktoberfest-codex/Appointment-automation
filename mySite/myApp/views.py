@@ -59,11 +59,38 @@ def forDesk(request):
     response = requests.get(api_url)
     data = response.json()
 
+    noDoc = len(data)
+
+    api_url2 = "http://127.0.0.1:3000/appointments"
+    response2 = requests.get(api_url2)
+    data2 = response2.json()
+
+
+
+
+    api_url3 = "http://127.0.0.1:3000/appointments"
+    response3 = requests.get(api_url3)
+    data3 = response3.json()
+    
+    noPatient = len(data3)
+
     print(data[0])
     context = {
-        'data':data
+        'data':data,
+        'patient':data2,
+        'noDoc':noDoc,
+        'noPatient':noPatient
     }
     return render(request,'deskLandingPage.html',context)
+
+def patientLogin(request):
+    return render(request,'patientLogin.html')
+
+def managerLogin(request):
+    return render(request,'managerLogin.html')
+
+def doctorLogin(request):
+    return render(request,'doctorLogin.html')
 
 def home(request):
 

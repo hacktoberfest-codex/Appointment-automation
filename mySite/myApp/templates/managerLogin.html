@@ -17,9 +17,10 @@
             <h1 class="text-3xl font-bold text-white ">AllotMeNow.com</h1>
         </div>
         <div class="right w-1/2 flex justify-end flex-row">
-            <a href="patientLogin.html" class="pait font-bold cursor-pointer text-white text-2xl capitalize h-10 border-r-2 text-center border-r-white w-1/5">patient</a>
-            <a href="managerLogin.html" class="manag font-bold cursor-pointer text-white text-2xl capitalize h-10 border-r-2 text-center border-r-white w-1/5">Manager</a>
-            <a href="doctorLogin.html" class="doct font-bold cursor-pointer text-white text-2xl capitalize h-10 text-center w-1/5">doctor</a>
+            
+            <a href={% url "patientLogin" %} class="pait font-bold cursor-pointer text-white text-2xl capitalize h-10 border-r-2 text-center border-r-white w-1/5">patient</a>
+            <a href={% url "managerLogin" %} class="manag font-bold cursor-pointer text-white text-2xl capitalize h-10 border-r-2 text-center border-r-white w-1/5">Manager</a>
+            <a href={% url "doctorLogin" %} class="doct font-bold cursor-pointer text-white text-2xl capitalize h-10 text-center w-1/5">doctor</a>
         </div>
     </div>
     <div class="main bg-[#1E74FF]">
