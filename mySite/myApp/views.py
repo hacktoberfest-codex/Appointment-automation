@@ -19,10 +19,6 @@ def forDoctor(request):
         if( gn['status']=='pending' ):
             pending.append(gn)
 
-    
-
-    print(f'Forwarded = {forwarded}')
-    print(data[0])
     context={
         'data':data,
         'forwarded':forwarded,
@@ -30,11 +26,32 @@ def forDoctor(request):
     }
     return render(request,"doctorsLandingPage.html",context)
 
-def get_user(request):
-    api_url = "http://127.0.0.1:3000/patients"
+
+def forDoctor2(request,id):
+    api_url = "http://127.0.0.1:3000/appointments"
     response = requests.get(api_url)
     data = response.json()
 
+    api_url2 = f"http://127.0.0.1:3000/patients?number={id}"
+    response2 = requests.get(api_url2)
+    patient = response2.json()
+    print(id)
+    print(patient)
+    forwarded = []
+    pending = []
+    for gn in data:
+        if( gn['status']=='forwarded' ):
+            forwarded.append(gn)
+        if( gn['status']=='pending' ):
+            pending.append(gn)
+
+    context={
+        'data':data,
+        'forwarded':forwarded,
+        'pending':pending,
+        'patient':patient[0],
+    }
+    return render(request,"doctorsLandingPage2.html",context)
 
 
 def forDesk(request):

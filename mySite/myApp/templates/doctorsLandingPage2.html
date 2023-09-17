@@ -1,5 +1,4 @@
 {% load static %}
-{% csrf_token %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,14 +101,14 @@
             <div class="part2 pt-6 w-full grid grid-cols-2 gap-3">
                 <div class="curr-patient  p-10 bg-white rounded-2xl h-96 flex flex-row justify-between items-center">
                     <div class="details font-semibold text-lg capitalize">
-                        <h1 class="text-black text-3xl font-bold">Priyansu Dash</h1>
+                        <h1 class="text-black text-3xl font-bold">{{patient.first_name}} {{patient.last_name}}</h1>
                         <h3 class="text-[#969696] mt-2">appointment id - #214243</h3>
                         <h3 class="text-[#969696] mt-2">priyansudash03</h3>
-                        <h3 class="text-[#969696] mt-2">age:- 20</h3>
-                        <h3 class="text-[#969696] mt-2">blood group:- O-</h3>
-                        <h3 class="text-[#969696] mt-2">gender: male</h3>
-                        <h3 class="text-[#969696] mt-2">10-sep-2003</h3>
-                        <h3 class="text-[#969696] mt-2">phone no:- 9502964398</h3>
+                        <h3 class="text-[#969696] mt-2">age:- {{patient.age}}</h3>
+                        <h3 class="text-[#969696] mt-2">blood group:- {{patient.blood_group}}</h3>
+                        <h3 class="text-[#969696] mt-2">gender: {{patient.gender}}</h3>
+                        <h3 class="text-[#969696] mt-2">{{patient.date_of_birth}}</h3>
+                        <h3 class="text-[#969696] mt-2">phone no:- {{patient.phone}}</h3>
                     </div>
                     <div class="image flex flex-col items-center justify-center">
                         <img class="h-72 w-72"
@@ -138,8 +137,6 @@
                         {% for n in pending %}
                         <tbody>
                             
-                            <a href={% url "forDoctor2" n.patient.phone %}> 
-
                             <tr class="capitalize font-normal">
                                 <td class="py-2 px-8 text-[#222]">{{n.patient.first_name}} {{n.patient.last_name}}</td>
                                 <td class="py-2 px-8 text-[#222]">{{n.patient.gender}}</td>
@@ -147,8 +144,6 @@
                                 <td class="py-2 px-8 text-[#222]">{{n.date_time}}</td>
                                 <td class="py-2 px-8 text-[#222]"><a href={% url "forDoctor2" n.patient.phone %}><button>Open</button></a></td>
                             </tr>
-
-                            </a>
                         </tbody>
 
                         {% endfor %}
@@ -207,17 +202,14 @@
                             </tr>
                             
                             {% for n in forwarded %}
-                            
-                            <tr class="capitalize font-normal" >
-                                
-                                <td class="py-2 px-8 text-[#222]"><a href={% url 'forDoctor2' n.patient.phone %}>
-                                    {{n.patient.first_name}} {{n.patient.last_name}}
-                                </a></td>
+
+                            <tr class="capitalize font-normal" id=>
+                                <td class="py-2 px-8 text-[#222]">{{n.patient.first_name}} {{n.patient.last_name}}</td>
                                 <td class="py-2 px-8 text-[#222]">{{n.patient.gender}}</td>
                                 <td class="py-2 px-8 text-[#222]">{{n.patient.age}}</td>
                                 <td class="py-2 px-8 text-[#222]">{{n.patient.status}}</td>
                             </tr>
-                            
+
                             {% endfor %}
 
                             </div>

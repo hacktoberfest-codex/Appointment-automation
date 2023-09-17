@@ -7,5 +7,6 @@ urlpatterns = [
     path('',home,name='home'),
     path('forDoctor/',forDoctor,name='forDoctor'),
     path('forDesk/',forDesk,name='forDesk'),
+    path('forDoctor2/<int:id>/',forDoctor2,name='forDoctor2')
 
 ]
