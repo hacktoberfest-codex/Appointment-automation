@@ -33,16 +33,27 @@ router.get('/',async (req,res)=>{
     if(!patientList){
         return res.status(500).json({success: false, message: "Can't get list"});
     }
-    for(const patient of patientList){
+    if(patientList.length == 2){
+        for(const patient of patientList){
+            const getObjectParams = {
+                Bucket: bucketName,
+                Key: patient.image.imageName
+            }
+            const command = new GetObjectCommand(getObjectParams);
+            const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+            patient.image.imageURL = url;
+        }
+    }else{
         const getObjectParams = {
             Bucket: bucketName,
-            Key: patient.image.imageName
+            Key: patientList.image.imageName
         }
         const command = new GetObjectCommand(getObjectParams);
         const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
-        patient.image.imageURL = url;
+        patientList.image.imageURL = url;
     }
     res.status(200).send(patientList);
+    
 });
 
 router.get('/count',async (req,res)=>{
