@@ -51,16 +51,16 @@ router.put('/completed',async (req,res)=>{
     }
     let findPatient = await Patient.find(filter);
     let patientID = findPatient[0]._id.toString();
-    let findappointment = await Appointment.findOne({patient: findPatient[0]._id});
+    let findappointment = await Appointment.find({patient: findPatient[0]._id});
     try{
         let appointment;
         if(req.body.doctor){
-            appointment = await Appointment.findByIdAndUpdate(findappointment._id.toString(),{
+            appointment = await Appointment.findByIdAndUpdate(findappointment[0]._id.toString(),{
                 doctor : req.body.doctor,
                 status: 'forwarded'
             },{new: true});
         }else{
-            appointment = await Appointment.findByIdAndUpdate(findappointment._id.toString(),{
+            appointment = await Appointment.findByIdAndUpdate(findappointment[0]._id.toString(),{
                 status: 'completed'
             },{new: true});
         }
