@@ -92,6 +92,40 @@ def managerLogin(request):
 def doctorLogin(request):
     return render(request,'doctorLogin.html')
 
+def allDoc(request):
+    api_url = "http://127.0.0.1:3000/doctors"
+    response = requests.get(api_url)
+    data = response.json()
+
+    context = {
+        'data':data,
+    }
+
+    return render(request,'docList.html',context)
+
+def appointDone(request,id):
+    # api_url = "http://127.0.0.1:3000/appointments"
+    # response = requests.get(api_url)
+    # data = response.json()
+    
+    # forwarded = []
+    # pending = []
+    # for gn in data:
+    #     if( gn['status']=='forwarded' ):
+    #         forwarded.append(gn)
+    #     if( gn['status']=='pending' ):
+    #         pending.append(gn)
+
+    # context={
+    #     'data':data,
+    #     'forwarded':forwarded,
+    #     'pending':pending,
+    # }
+
+    forDoctor(request)
+
+    # render(request,"doctorsLandingPage.html",context)
+
 def home(request):
 
 

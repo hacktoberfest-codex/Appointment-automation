@@ -11,6 +11,7 @@ urlpatterns = [
     path('patientLogin/',patientLogin,name='patientLogin'),
     path('managerLogin/',managerLogin,name='managerLogin'),
     path('doctorLogin/',doctorLogin,name='doctorLogin'),
+    path('allDocs/',allDoc,name='allDoc'),
 
 
 ]

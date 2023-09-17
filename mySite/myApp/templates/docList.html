@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,7 +11,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://cdn.tailwindcss.com"></script>
 	
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href={% static "css/style.css" %}>
 
 	</head>
 	<body>
@@ -25,7 +26,7 @@
 						    <tr>
 						    	<th>&nbsp;</th>
 						    	<th>Name</th>
-						    	<th>Age</th>
+						    	<th>Speciality</th>
 						      <th></th>
 						      <th>ID</th>
 							  <th>Avail</th>
@@ -33,32 +34,8 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-						    <tr class="alert" role="alert">
-						    	<td>
-						    		
-						    	
-						    		<div>
-										<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="60">
-									</div>
-						    	</td>
-						      <td>
-						      	<div class="email">
-						      		<span>Doc1 </span>
-						      		<span>About</span>
-						      	</div>
-						      </td>
-						      <td>53</td>
-						      <td class="quantity">
-								<td>123456778</td>
-					        	<div class="input-group">
-									<td>yes</td>
-									<td>
-										<a href="">See more</a>
-									</td>
-				             	
-				          	</div>
-				        	</td>
-						    </tr>
+
+							{% for n in data %}
 
 						    <tr class="alert" role="alert">
 						    	
@@ -69,13 +46,13 @@
 						    	</td>
 						      <td>
 						      	<div class="email">
-						      		<span>Doc2 </span>
+						      		<span>{{n.first_name}} {{n.last_name}} </span>
 						      		<span>About</span>
 						      	</div>
 						      </td>
-						      <td>47</td>
+						      <td>{{n.speciality}}</td>
 						      <td class="quantity">
-								<td>124456654</td>
+								<td>{{n.phone}}</td>
 					        	<div class="input-group">
 									<td>yes</td>
 									<td>
@@ -87,86 +64,8 @@
 				        	</td>
 						    </tr>
 
-						    <tr class="alert" role="alert">
-						    	<td>
-						    		<div>
-										<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="60">
-									</div>
-						    	</td>
-						      <td>
-						      	<div class="email">
-						      		<span>Doc3</span>
-						      		<span>About</span>
-						      	</div>
-						      </td>
-						      <td>41</td>
-						      <td class="quantity">
-								<td>124456654</td>
-					        	<div class="input-group">
-									<td>yes</td>
-									<td>
-										<a href="">See more</a>
-									</td>
-				             	
-				          	</div>
-						      	
-				        	</td>
-						    </tr>
-
-						    <tr class="alert" role="alert">
-						    	<td>
-						    		<div>
-										<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="60">	
-									</div>
-						    	</td>
-						      <td>
-						      	<div class="email">
-						      		<span>Doc4 </span>
-						      		<span>About</span>
-						      	</div>
-						      </td>
-						      <td>54</td>
-						      <td class="quantity">
-								<td>124456654</td>
-					        	<div class="input-group">
-									<td>No</td>
-									<td>
-										<a href="">See more</a>
-									</td>
-				          	</div>
-				          </td>
-				          
-						      <td>
-						      	
-				        	</td>
-						    </tr>
-
-						    <tr class="alert" role="alert">
-						    	<td class="border-bottom-0">
-						    		<div>
-										<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="60">
-									</div>
-						    	</td>
-						      <td class="border-bottom-0">
-						      	<div class="email">
-						      		<span>Doc5 </span>
-						      		<span>About</span>
-						      	</div>
-						      </td>
-						      <td class="border-bottom-0">45</td>
-						      <td class="quantity border-bottom-0">
-								<td>124456654</td>
-					        	<div class="input-group">
-									<td>No</td>
-									<td>
-										<a href="">See more</a>
-									</td>
-				             	
-				          	</div>
-				          </td>
-						      <td class="border-bottom-0">
-				        	</td>
-						    </tr>
+							{% endfor %}
+						    
 						  </tbody>
 						</table>
 					</div>
