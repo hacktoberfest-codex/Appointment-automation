@@ -133,22 +133,22 @@
                                 <td class="py-2 px-8 text-[#222]">action</td>
                             </tr>
                         </thead>
-                        
+
                         {% for n in data %}
                         <tbody>
 
                             <tr class="capitalize font-normal">
                                 <td class="py-2 px-8 text-[#222]">{{n.patient.first_name}} {{n.patient.last_name}}</td>
                                 <td class="py-2 px-8 text-[#222]">{{n.patient.gender}}</td>
-                                <td class="py-2 px-8 text-[#222]">{{n.patient.age}}</td>    
+                                <td class="py-2 px-8 text-[#222]">{{n.patient.age}}</td>
                                 <td class="py-2 px-8 text-[#222]">{{n.date_time}}</td>
                                 <td class="py-2 px-8 text-[#222]">icon</td>
                             </tr>
                         </tbody>
-                        
+
                         {% endfor %}
 
-                        
+
                     </table>
                 </div>
             </div>
@@ -161,9 +161,11 @@
                             <h1 class="text-2xl font-bold text-black">Session completed?</h1>
                             <div class="emoji flex flex-row  items-center">
                                 <input class="hidden" type="radio" id="checked" name="status" value="check">
-                                <label for="checked"><img class="h-24 w-24" src={% static "images\check.png" %} alt=""></label>
+                                <label for="checked"><img class="h-24 w-24" src={% static "images\check.png" %}
+                                        alt=""></label>
                                 <input class="hidden" type="radio" id="css" name="status" value="uncheck">
-                                <label for="css"> <img class="h-16 w-16" src={% static "images\uncheck.webp" %} alt=""></label>
+                                <label for="css"> <img class="h-16 w-16" src={% static "images\uncheck.webp" %}
+                                        alt=""></label>
 
 
                             </div>
@@ -183,59 +185,56 @@
                 </div>
                 <div
                     class="reviews px-10 py-6 bg-white rounded-2xl h-56 overflow-y-scroll hide-scrollbar overflow-x-hidden ">
-                    <h1 class="uppercase text-2xl font-bold mb-3">Patients reviews:-</h1>
-                    <div class="comment flex flex-row justify-between mb-3">
-                        <div class="name flex flex-row">
-                            <div class="image mr-3">
-                                <img class="h-10 w-10 bg-[#D4E8EF] rounded-2xl " src={% static "images/boy.png" %} alt="">
-                            </div>
-                            <div class="details capitalize font-semibold">
-                                <h2 class="text-base">Dr.Prashant</h2>
-                                <h4 class="text-xs text-gray-500">Cardiologist</h4>
+                    <h1 class="uppercase text-2xl font-bold mb-3">Forwarded patients:-</h1>
+                    <table class="w-full border-collapse ">
+                        <thead class="capitalize">
+                            <tr class="border-t-[1px] border-b-[1px] border-[#f0f0f0] font-semibold">
+                                <td class="py-2 px-8 text-[#222]">name</td>
+                                <td class="py-2 px-8 text-[#222]">gender</td>
+                                <td class="py-2 px-8 text-[#222]">age</td>
+                                <td class="py-2 px-8 text-[#222]">action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="capitalize font-normal">
+                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
+                                <td class="py-2 px-8 text-[#222]">male</td>
+                                <td class="py-2 px-8 text-[#222]">35</td>
+                                <td class="py-2 px-8 text-[#222]">icon</td>
+                            </tr>
+                            <tr class="capitalize font-normal">
+                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
+                                <td class="py-2 px-8 text-[#222]">male</td>
+                                <td class="py-2 px-8 text-[#222]">35</td>
+                                <td class="py-2 px-8 text-[#222]">icon</td>
+                            </tr>
+                            <tr class="capitalize font-normal">
+                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
+                                <td class="py-2 px-8 text-[#222]">male</td>
+                                <td class="py-2 px-8 text-[#222]">35</td>
+                                <td class="py-2 px-8 text-[#222]">icon</td>
+                            </tr>
+                            <tr class="capitalize font-normal">
+                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
+                                <td class="py-2 px-8 text-[#222]">male</td>
+                                <td class="py-2 px-8 text-[#222]">35</td>
+                                <td class="py-2 px-8 text-[#222]">icon</td>
+                            </tr>
+                            <tr class="capitalize font-normal">
+                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
+                                <td class="py-2 px-8 text-[#222]">male</td>
+                                <td class="py-2 px-8 text-[#222]">35</td>
+                                <td class="py-2 px-8 text-[#222]">icon</td>
+                            </tr>
+                            <tr class="capitalize font-normal">
+                                <td class="py-2 px-8 text-[#222]">prashant pandey</td>
+                                <td class="py-2 px-8 text-[#222]">male</td>
+                                <td class="py-2 px-8 text-[#222]">35</td>
+                                <td class="py-2 px-8 text-[#222]">icon</td>
+                            </tr>
 
-                            </div>
-                        </div>
-                        <h3 class="text-sm text-gray-500 font-semibold">150 patients</h3>
-                    </div>
-                    <div class="comment flex flex-row justify-between mb-3">
-                        <div class="name flex flex-row">
-                            <div class="image mr-3">
-                                <img class="h-10 w-10 bg-[#F5E2E3] rounded-2xl " src={% static "images/girl.png" %} alt="">
-                            </div>
-                            <div class="details capitalize font-semibold">
-                                <h2 class="text-base">Dr.shelly</h2>
-                                <h4 class="text-xs text-gray-500">general</h4>
-
-                            </div>
-                        </div>
-                        <h3 class="text-sm text-gray-500 font-semibold">250 patients</h3>
-                    </div>
-                    <div class="comment flex flex-row justify-between mb-3">
-                        <div class="name flex flex-row">
-                            <div class="image mr-3">
-                                <img class="h-10 w-10 bg-[#D4E8EF] rounded-2xl " src={% static "images/boy.png" %} alt="">
-                            </div>
-                            <div class="details capitalize font-semibold">
-                                <h2 class="text-base">Dr.Prashant</h2>
-                                <h4 class="text-xs text-gray-500">Cardiologist</h4>
-
-                            </div>
-                        </div>
-                        <h3 class="text-sm text-gray-500 font-semibold">150 patients</h3>
-                    </div>
-                    <div class="comment flex flex-row justify-between mb-3">
-                        <div class="name flex flex-row">
-                            <div class="image mr-3">
-                                <img class="h-10 w-10 bg-[#F5E2E3] rounded-2xl " src={% static "images/girl.png" %} alt="">
-                            </div>
-                            <div class="details capitalize font-semibold">
-                                <h2 class="text-base">Dr.shelly</h2>
-                                <h4 class="text-xs text-gray-500">general</h4>
-
-                            </div>
-                        </div>
-                        <h3 class="text-sm text-gray-500 font-semibold">250 patients</h3>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
